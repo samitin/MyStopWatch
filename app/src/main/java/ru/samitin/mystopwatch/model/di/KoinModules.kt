@@ -12,17 +12,17 @@ import ru.samitin.mystopwatch.viewModel.StopWatchViewModel
 
 
 val model = module {
-    single <StopwatchStateHolder>{ StopwatchStateHolder(get(), get(), TimestampMillisecondsFormatter()) }
-    single <StopwatchStateCalculator>{  StopwatchStateCalculator(get(),get()) }
-    single <ElapsedTimeCalculator>{ ElapsedTimeCalculator(get()) }
-    single<TimestampProvider> {object : TimestampProvider {
+    factory <StopwatchStateHolder>{ StopwatchStateHolder(get(), get(), TimestampMillisecondsFormatter()) }
+    factory <StopwatchStateCalculator>{  StopwatchStateCalculator(get(),get()) }
+    factory <ElapsedTimeCalculator>{ ElapsedTimeCalculator(get()) }
+    factory<TimestampProvider> {object : TimestampProvider {
         override fun getMilliseconds(): Long {
             return System.currentTimeMillis()
         }
     } }
 }
 val svViewModel = module {
-    single <StopwatchListOrchestrator> {
+    factory <StopwatchListOrchestrator> {
         StopwatchListOrchestrator(get(), CoroutineScope(Dispatchers.Main + SupervisorJob()))
     }
     viewModel { StopWatchViewModel(get())}
