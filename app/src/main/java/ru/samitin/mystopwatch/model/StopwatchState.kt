@@ -1,4 +1,4 @@
-package ru.samitin.mystopwatch.viewModel
+package ru.samitin.mystopwatch.model
 
 sealed class StopwatchState {
 

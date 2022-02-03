@@ -1,7 +1,5 @@
 package ru.samitin.mystopwatch.model
 
-import ru.samitin.mystopwatch.viewModel.StopwatchState
-
 class StopwatchStateCalculator(
     private val timestampProvider: TimestampProvider,
     private val elapsedTimeCalculator: ElapsedTimeCalculator,
